@@ -46,4 +46,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeRepository.deleteAll();
 	}
 
+	
+	public Optional<Employee> searchEmployeeByName(String text) {
+		// TODO Auto-generated method stub
+		return employeeRepository.searchEmployeeByName(text);
+	}
+
 }

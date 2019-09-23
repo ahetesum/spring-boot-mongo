@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,13 +32,20 @@ public class EmployeeController {
 
 	@GetMapping( value = "/getall")
 	public Collection<Employee> getAllEmployee() {
-		 logger.debug("Getting all employees.");
+		 logger.info("Getting all employees.");
 		return employeeService.getAllEmployees();
+	}
+	
+	@GetMapping( value = "/search")
+	public Optional<Employee> searchEmployee(String text) {
+		 logger.error("Getting employee searching = {}.", text);
+		return employeeService.searchEmployeeByName(text);
 	}
 
 	@GetMapping( value = "/getbyid/{id}")
+	@Cacheable("getEmployeeWithId")
 	public Optional<Employee> getEmployeeWithId(@PathVariable(value = "id") int id) {
-		 logger.debug("Getting employee with employee-id= {}.", id);
+		 logger.error("Getting employee with employee-id= {}.", id);
 		return employeeService.findEmployeeById(id);
 	}
 	

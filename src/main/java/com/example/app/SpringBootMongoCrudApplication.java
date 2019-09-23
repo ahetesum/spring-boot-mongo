@@ -7,11 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 import com.example.app.model.Employee;
 import com.example.app.repository.EmployeeRepository;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
+@EnableSwagger2
+@EnableCaching
 public class SpringBootMongoCrudApplication implements CommandLineRunner {
 
 	@Autowired private EmployeeRepository employeeRepository;

@@ -25,24 +25,22 @@ public class EmployeeServiceUnitTest {
 
 	@Mock
 	private EmployeeRepository employeeRepository;
-	
-    @InjectMocks 
-    private EmployeeService employeeService = new EmployeeServiceImpl();
 
-	private Employee emp1 = new Employee(1,"Subhas Kumar","Technical Associate",60000d);
+	@InjectMocks
+	private EmployeeService employeeService = new EmployeeServiceImpl();
 
-    
-    @BeforeEach
-    void setMockOutput() {
+	private Employee emp1 = new Employee(1, "Subhas Kumar", "Technical Associate", 60000d);
 
-        when(employeeRepository.findById(1)).thenReturn(Optional.of(emp1));
-    }
-	
-    
+	@BeforeEach
+	void setMockOutput() {
+
+		when(employeeRepository.findById(1)).thenReturn(Optional.of(emp1));
+	}
+
 	@Test
 	@DisplayName("Employee Service GetAll ")
 	public void getAll() {
-        System.out.println( employeeService.findEmployeeById(1).get().getId());
+		System.out.println(employeeService.findEmployeeById(1).get().getId());
 
 		assertEquals(emp1.getId(), employeeService.findEmployeeById(1).get().getId());
 

@@ -1,6 +1,5 @@
 package com.example.app;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -63,6 +62,7 @@ public class EmployeeControllerTest {
 
     @Test
     public void testCreateEmployee() {
+    	
 		Employee employee = new Employee(101,"Monju R","Technical Associate",65000d);
 		List<Employee> listOfEmp= new ArrayList<Employee>();
 		listOfEmp.add(employee);
