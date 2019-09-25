@@ -1,4 +1,4 @@
-package com.example.app;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 
 import com.example.app.model.Employee;
@@ -19,8 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @EnableCaching
-public class SpringBootMongoCrudApplication extends SpringBootServletInitializer 
-												implements CommandLineRunner {
+public class SpringBootMongoCrudApplication implements CommandLineRunner {
 
 	@Autowired private EmployeeRepository employeeRepository;
 
@@ -46,11 +43,6 @@ public class SpringBootMongoCrudApplication extends SpringBootServletInitializer
 		employeeRepository.insert(employeeList);
 	
 
-	}
-	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(SpringBootMongoCrudApplication.class);
 	}
 
 }
